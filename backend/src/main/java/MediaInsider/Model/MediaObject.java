@@ -1,15 +1,28 @@
 package MediaInsider.Model;
 
+import javax.persistence.*;
+
+
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
+@Table(name = "media")
 public class MediaObject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "type")
     private MediaType type;
+    @Column(name = "description")
     private String description;
+    @Column(name = "uploadDate")
     private Date uploadDate;
+    @Column(name = "uploadBy")
     private String uploadBy;
+    @Column(name = "author")
     private String author;
 
 
@@ -37,10 +50,6 @@ public class MediaObject {
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {

@@ -2,11 +2,12 @@ package MediaInsider.Storage;
 
 import MediaInsider.Model.MediaObject;
 import MediaInsider.Model.MediaType;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface IStorage {
-    public MediaObject getMediaObjectByName(String name);
+    public List<MediaObject> getMediaObjectByName(String name);
 
     public MediaObject getMediaObjectByID(long id);
 

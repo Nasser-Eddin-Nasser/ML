@@ -11,8 +11,9 @@ import org.springframework.context.annotation.Scope;
 
 import java.util.Date;
 
-@SpringBootApplication
+@SpringBootApplication()
 public class MediaInsiderApplication {
+    public static final boolean DB_Connection= true;
     public static void main(String[] args) {
         SpringApplication.run(MediaInsiderApplication.class, args);
     }

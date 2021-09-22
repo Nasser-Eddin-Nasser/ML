@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,10 +27,8 @@ public class LocalStorage implements IStorage {
 
 
     @Override
-    public MediaObject getMediaObjectByName(String name) {
-        return mediaObjectsList.stream().filter(x -> x.getName().equals(name))
-                .findAny()
-                .orElse(null);
+    public List<MediaObject> getMediaObjectByName(String name) {
+        return mediaObjectsList.stream().filter(x -> x.getName().equals(name)).collect(Collectors.toList());
     }
 
     @Override
@@ -107,9 +106,12 @@ public class LocalStorage implements IStorage {
     public boolean isExist(MediaObject mediaObject) {
         boolean result = false;
         for (MediaObject mo : mediaObjectsList) {
-            if (mo.getId() == mediaObject.getId() ||
-                    mo.getName().equals(mediaObject.getName())
-            ) {
+            if (Objects.isNull(mo.getId())) {
+                if (mo.getName() == mediaObject.getName()) {
+                    result = true;
+                    break;
+                }
+            } else if (mo.getId() == mediaObject.getId()) {
                 result = true;
                 break;
             }
