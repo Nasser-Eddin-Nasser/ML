@@ -3,12 +3,11 @@ package MediaInsider.Storage;
 import MediaInsider.Model.MediaObject;
 import MediaInsider.Model.MediaType;
 import MediaInsider.Storage.DB.IDBStorage;
-import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
-@Service
+
 public class DBStorage implements IStorage {
     private IDBStorage repo;
 
@@ -50,12 +49,13 @@ public class DBStorage implements IStorage {
 
     @Override
     public void deleteMediaObjectByID(long id) {
-        repo.deleteById(id);
+        if (isExist(id)) repo.deleteById(id);
     }
 
     @Override
     public void deleteMediaObjectByName(String name) {
-        repo.deleteByName(name);
+        if (isExist(name))
+            repo.deleteByName(name);
     }
 
     @Override

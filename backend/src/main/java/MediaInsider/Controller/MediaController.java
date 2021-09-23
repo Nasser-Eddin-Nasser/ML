@@ -2,13 +2,10 @@ package MediaInsider.Controller;
 
 import MediaInsider.Model.MediaObject;
 import MediaInsider.Storage.DB.IDBStorage;
-import MediaInsider.Storage.DBStorage;
 import MediaInsider.Storage.IStorage;
 import MediaInsider.Storage.Storage;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,12 +68,12 @@ public class MediaController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(storage.getMediaObjects());
     }
 
-    @DeleteMapping("/exist/name/{name}")
+    @DeleteMapping("/name/{name}")
     public void deleteObjectByName(@PathVariable("name") String name) {
         storage.deleteMediaObjectByName(name);
     }
 
-    @DeleteMapping("/exist/id/{id}")
+    @DeleteMapping("/id/{id}")
     public void deleteMediaObjectByID(@PathVariable("id") Long id) {
         storage.deleteMediaObjectByID(id);
     }

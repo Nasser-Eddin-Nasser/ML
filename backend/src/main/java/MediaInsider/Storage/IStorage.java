@@ -2,7 +2,6 @@ package MediaInsider.Storage;
 
 import MediaInsider.Model.MediaObject;
 import MediaInsider.Model.MediaType;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 

@@ -3,17 +3,17 @@ package MediaInsider.Storage.DB;
 import MediaInsider.Model.MediaObject;
 import MediaInsider.Model.MediaType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 import static MediaInsider.Storage.DB.Query.*;
 
 @Repository
 public interface IDBStorage extends JpaRepository<MediaObject, Long> {
-    MediaObject getById(Long id);
 
     List<MediaObject> findAll();
 
@@ -31,6 +31,8 @@ public interface IDBStorage extends JpaRepository<MediaObject, Long> {
     @Override
     void deleteById(Long id);
 
+    @Modifying
+    @Transactional
     @Query(value = deleteByName, nativeQuery = true)
     void deleteByName(String name);
 

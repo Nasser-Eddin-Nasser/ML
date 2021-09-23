@@ -1,10 +1,7 @@
 package MediaInsider.Model;
 
 import javax.persistence.*;
-
-
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Table(name = "media")

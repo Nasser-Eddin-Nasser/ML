@@ -1,8 +1,6 @@
 package MediaInsider.Model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.Random;
 
 public enum MediaType {
