@@ -12,7 +12,6 @@ public class Storage {
     @Bean
     @Scope("singleton")
     public IStorage getStorage(IDBStorage repo) {
-        System.out.println("im here! getStorage ");
         if (DB_Connection)
             return new DBStorage(repo);
         return new LocalStorage();

@@ -10,13 +10,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static MediaInsider.MediaInsiderApplication.Storage_Dummies_Number;
+
 @Service
 public class LocalStorage implements IStorage {
     private List<MediaObject> mediaObjectsList;
 
     public LocalStorage() {
         mediaObjectsList = new LinkedList<MediaObject>();
-        this.insertDummy(10);
+        this.insertDummy(Storage_Dummies_Number);
     }
 
     private void insertDummy(int count) {

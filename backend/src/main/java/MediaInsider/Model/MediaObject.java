@@ -6,13 +6,15 @@ import java.util.Date;
 @Entity
 @Table(name = "media")
 public class MediaObject {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "name")
     private String name;
     @Column(name = "type")
-    private MediaType type;
+    @Enumerated(EnumType.STRING)
+      private MediaType type;
     @Column(name = "description")
     private String description;
     @Column(name = "uploadDate")

@@ -1,6 +1,7 @@
 package MediaInsider.Controller;
 
 import MediaInsider.Model.MediaObject;
+import MediaInsider.Model.MediaType;
 import MediaInsider.Storage.DB.IDBStorage;
 import MediaInsider.Storage.IStorage;
 import MediaInsider.Storage.Storage;
@@ -15,7 +16,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @CrossOrigin
-@RequestMapping("api/controller")
+@RequestMapping("media")
 @RestController
 public class MediaController {
     @Autowired
@@ -31,22 +32,28 @@ public class MediaController {
 
     @GetMapping()
     public ResponseEntity<List<MediaObject>> getMediaList() {
-        if (repo == null)
-            System.err.println("null in repo CONTROLLER");
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(storage.getMediaObjects());
     }
 
     @GetMapping("/name/{name}")
-    public  ResponseEntity<List<MediaObject>> getMediaObjectByName(@PathVariable("name") String name) {
-        List<MediaObject>  result = storage.getMediaObjectByName(name);
+    public ResponseEntity<List<MediaObject>> getMediaObjectByName(@PathVariable("name") String name) {
+        List<MediaObject> result = storage.getMediaObjectByName(name);
         if (result != null)
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(result);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<MediaObject> getMediaObjectByID(@PathVariable("id") Long id) {
-        MediaObject result = storage.getMediaObjectByID(id);
+    public ResponseEntity<MediaObject> getMediaObjectByID(@PathVariable("id") String id) {
+        MediaObject result = storage.getMediaObjectByID(Long.parseLong(id));
+        if (result != null)
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(result);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+    }
+
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<MediaObject>> getMediaObjectsByTyp(@PathVariable("type") MediaType type) {
+        List<MediaObject> result = storage.getMediaObjectsByTyp(type);
         if (result != null)
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(result);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);

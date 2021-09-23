@@ -7,13 +7,15 @@ import MediaInsider.Storage.DB.IDBStorage;
 import java.util.Date;
 import java.util.List;
 
+import static MediaInsider.MediaInsiderApplication.Storage_Dummies_Number;
+
 
 public class DBStorage implements IStorage {
     private IDBStorage repo;
 
     public DBStorage(IDBStorage repo) {
         this.repo = repo;
-        insertDummy(10);
+        insertDummy(Storage_Dummies_Number);
     }
 
     private void insertDummy(int count) {
@@ -29,7 +31,7 @@ public class DBStorage implements IStorage {
 
     @Override
     public MediaObject getMediaObjectByID(long id) {
-        return repo.getById(id);
+        return repo.findById(id).get();
     }
 
     @Override
@@ -44,7 +46,7 @@ public class DBStorage implements IStorage {
 
     @Override
     public List<MediaObject> getMediaObjectsByTyp(MediaType type) {
-        return repo.getMediaListByType(type);
+        return repo.getMediaListByType(type.toString());
     }
 
     @Override

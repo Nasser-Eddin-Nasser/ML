@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static MediaInsider.Storage.DB.Query.*;
 
@@ -16,6 +17,10 @@ import static MediaInsider.Storage.DB.Query.*;
 public interface IDBStorage extends JpaRepository<MediaObject, Long> {
 
     List<MediaObject> findAll();
+
+    @Override
+    Optional<MediaObject> findById(Long id);
+
 
     @Query(value = getMediaByName, nativeQuery = true)
     List<MediaObject> getMediaByName(String name);
@@ -26,7 +31,8 @@ public interface IDBStorage extends JpaRepository<MediaObject, Long> {
     List<MediaObject> getMediaListByAuthor(String name);
 
     @Query(value = getMediaListByType, nativeQuery = true)
-    List<MediaObject> getMediaListByType(MediaType mediaType);
+    List<MediaObject> getMediaListByType(String mediaType);
+
 
     @Override
     void deleteById(Long id);
