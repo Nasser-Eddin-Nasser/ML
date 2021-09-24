@@ -13,5 +13,10 @@ public class Query {
     public static final String deleteByName = "DELETE FROM media WHERE name= ?1";
 
     public static final String existsByName = "SELECT EXISTS(SELECT * FROM media where name=?1)";
- 
+
+    public static final String findByString = "SELECT * FROM media where name LIKE %?1% OR type LIKE %?1% OR description LIKE %?1% OR author LIKE %?1%";
+
 }
+
+
+//    OR type LIKE %?1% OR description LIKE %?1% OR author LIKE %?1%)

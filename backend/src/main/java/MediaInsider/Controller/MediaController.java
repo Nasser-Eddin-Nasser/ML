@@ -5,6 +5,7 @@ import MediaInsider.Model.MediaType;
 import MediaInsider.Storage.DB.IDBStorage;
 import MediaInsider.Storage.IStorage;
 import MediaInsider.Storage.Storage;
+import MediaInsider.Utils.JSONService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+
 
 @CrossOrigin
 @RequestMapping("media")
@@ -74,6 +76,15 @@ public class MediaController {
         storage.insertOrUpdate(mo);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(storage.getMediaObjects());
     }
+
+
+    @PostMapping("/find")
+    public ResponseEntity<List<MediaObject>> findInMedia(@RequestBody Object searchQuery) {
+        List<Object> searchObjects = JSONService.toSearchObjects(searchQuery);
+        List<MediaObject> result = storage.getMediaObjectsByObjectList(searchObjects);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(result);
+    }
+
 
     @DeleteMapping("/name/{name}")
     public void deleteObjectByName(@PathVariable("name") String name) {

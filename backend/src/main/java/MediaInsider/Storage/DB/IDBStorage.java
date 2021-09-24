@@ -21,7 +21,6 @@ public interface IDBStorage extends JpaRepository<MediaObject, Long> {
     @Override
     Optional<MediaObject> findById(Long id);
 
-
     @Query(value = getMediaByName, nativeQuery = true)
     List<MediaObject> getMediaByName(String name);
 
@@ -32,7 +31,6 @@ public interface IDBStorage extends JpaRepository<MediaObject, Long> {
 
     @Query(value = getMediaListByType, nativeQuery = true)
     List<MediaObject> getMediaListByType(String mediaType);
-
 
     @Override
     void deleteById(Long id);
@@ -48,4 +46,7 @@ public interface IDBStorage extends JpaRepository<MediaObject, Long> {
     @Query(value = existsByName, nativeQuery = true)
     boolean existByName(String name);
 
+
+    @Query(value = findByString, nativeQuery = true)
+    List<MediaObject> findByString(String keyWord);
 }

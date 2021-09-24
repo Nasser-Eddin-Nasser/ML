@@ -12,6 +12,8 @@ public interface IStorage {
 
     public List<MediaObject> getMediaObjects();
 
+    public List<MediaObject> getMediaObjectsByObjectList(List<Object> objects);
+
     public List<MediaObject> getMediaObjectsByAuthor(String author);
 
     public List<MediaObject> getMediaObjectsByTyp(MediaType type);

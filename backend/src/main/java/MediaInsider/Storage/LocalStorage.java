@@ -46,6 +46,11 @@ public class LocalStorage implements IStorage {
     }
 
     @Override
+    public List<MediaObject> getMediaObjectsByObjectList(List<Object> objects) {
+        return null;
+    }
+
+    @Override
     public List<MediaObject> getMediaObjectsByAuthor(String author) {
         return mediaObjectsList.stream().filter(x -> x.getAuthor().equals(author)).collect(Collectors.toList());
     }

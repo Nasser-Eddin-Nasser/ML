@@ -4,8 +4,8 @@ import MediaInsider.Model.MediaObject;
 import MediaInsider.Model.MediaType;
 import MediaInsider.Storage.DB.IDBStorage;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static MediaInsider.MediaInsiderApplication.Storage_Dummies_Number;
 
@@ -37,6 +37,25 @@ public class DBStorage implements IStorage {
     @Override
     public List<MediaObject> getMediaObjects() {
         return repo.findAll();
+    }
+
+    @Override
+    public List<MediaObject> getMediaObjectsByObjectList(List<Object> objects) {
+        List<MediaObject> result = new ArrayList<MediaObject>();
+        for (Object item : objects) {
+            if (item instanceof Number) {
+                long id = Long.parseLong(item.toString());
+                try {
+                    MediaObject mo = repo.findById(id).get();
+                    if (mo != null) result.add(mo);
+                } catch (NoSuchElementException e) {
+                    //ignored
+                }
+            } else {
+                result.addAll(repo.findByString(item.toString()));
+            }
+        }
+        return new LinkedHashSet<>(result).stream().collect(Collectors.toList());
     }
 
     @Override
