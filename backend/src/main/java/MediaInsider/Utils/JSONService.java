@@ -18,7 +18,6 @@ public class JSONService {
         while (keys.hasNext()) {
             String key = keys.next();
             Object value = obj.get(key);
-//            System.out.println(value.getClass());
             result.add(value);
         }
         return result;

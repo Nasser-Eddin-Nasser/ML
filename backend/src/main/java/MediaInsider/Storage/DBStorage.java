@@ -4,7 +4,10 @@ import MediaInsider.Model.MediaObject;
 import MediaInsider.Model.MediaType;
 import MediaInsider.Storage.DB.IDBStorage;
 
-import java.util.*;
+import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import static MediaInsider.MediaInsiderApplication.Storage_Dummies_Number;
@@ -41,7 +44,7 @@ public class DBStorage implements IStorage {
 
     @Override
     public List<MediaObject> getMediaObjectsByObjectList(List<Object> objects) {
-        List<MediaObject> result = new ArrayList<MediaObject>();
+        LinkedHashSet<MediaObject> result = new LinkedHashSet<MediaObject>();
         for (Object item : objects) {
             if (item instanceof Number) {
                 long id = Long.parseLong(item.toString());
@@ -55,7 +58,7 @@ public class DBStorage implements IStorage {
                 result.addAll(repo.findByString(item.toString()));
             }
         }
-        return new LinkedHashSet<>(result).stream().collect(Collectors.toList());
+        return result.stream().collect(Collectors.toList());
     }
 
     @Override

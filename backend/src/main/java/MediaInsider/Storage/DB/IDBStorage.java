@@ -1,7 +1,6 @@
 package MediaInsider.Storage.DB;
 
 import MediaInsider.Model.MediaObject;
-import MediaInsider.Model.MediaType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,7 +14,6 @@ import static MediaInsider.Storage.DB.Query.*;
 
 @Repository
 public interface IDBStorage extends JpaRepository<MediaObject, Long> {
-
     List<MediaObject> findAll();
 
     @Override
@@ -45,7 +43,6 @@ public interface IDBStorage extends JpaRepository<MediaObject, Long> {
 
     @Query(value = existsByName, nativeQuery = true)
     boolean existByName(String name);
-
 
     @Query(value = findByString, nativeQuery = true)
     List<MediaObject> findByString(String keyWord);

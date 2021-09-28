@@ -14,7 +14,7 @@ public class MediaObject {
     private String name;
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
-      private MediaType type;
+    private MediaType type;
     @Column(name = "description")
     private String description;
     @Column(name = "uploadDate")

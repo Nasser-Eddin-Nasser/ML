@@ -17,6 +17,3 @@ public class Query {
     public static final String findByString = "SELECT * FROM media where name LIKE %?1% OR type LIKE %?1% OR description LIKE %?1% OR author LIKE %?1%";
 
 }
-
-
-//    OR type LIKE %?1% OR description LIKE %?1% OR author LIKE %?1%)
