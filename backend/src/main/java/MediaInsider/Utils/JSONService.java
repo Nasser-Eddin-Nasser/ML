@@ -9,7 +9,7 @@ import java.util.List;
 
 public class JSONService {
 
-    public static List<Object> toSearchObjects(Object jo) throws JSONException {
+    public static List<Object> toSearchObjects(Object jo) throws JSONException { // Todo jackson parser, mediatech view
         List<Object> result = new ArrayList<Object>();
         JSONObject.testValidity(jo);
         String jsonString = JSONObject.valueToString(jo);
@@ -22,6 +22,4 @@ public class JSONService {
         }
         return result;
     }
-
-
 }

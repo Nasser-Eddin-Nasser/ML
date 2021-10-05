@@ -23,7 +23,8 @@ public class DBStorage implements IStorage {
 
     private void insertDummy(int count) {
         for (int i = 0; i < count; i++) {
-            this.insertOrUpdate(new MediaObject("name-" + i, MediaType.getRandom(), "description ", new Date(), "upload", "author-" + i));
+//            this.insertOrUpdate(new MediaObject(i, "name-" + i, MediaType.getRandom(), "Celebrating anniversary paragraphs we copy. Thank god daily for text from you paste long text to super copy and long paragraphs to super user name of the blood in? From seesaw account and long text to copy paste them; your writing in! Can log in prison with paste text. You hear your store data is very startling conclusion to skate around me prove useful for? Wake me and paste it ", new Date(), "upload", "author-" + i));
+            this.insertOrUpdate(new MediaObject(i, "name-" + i, MediaType.getRandom(), "Celebrating", new Date(), "upload", "author-" + i));
         }
     }
 

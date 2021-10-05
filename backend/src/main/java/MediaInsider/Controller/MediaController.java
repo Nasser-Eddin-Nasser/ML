@@ -85,7 +85,6 @@ public class MediaController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(result);
     }
 
-
     @DeleteMapping("/name/{name}")
     public void deleteObjectByName(@PathVariable("name") String name) {
         storage.deleteMediaObjectByName(name);
