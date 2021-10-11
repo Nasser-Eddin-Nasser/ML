@@ -2,6 +2,7 @@ package MediaInsider.Storage;
 
 import MediaInsider.Model.MediaObject;
 import MediaInsider.Model.MediaType;
+import MediaInsider.Model.SearchObject;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public interface IStorage {
     public List<MediaObject> getMediaObjects();
 
     public List<MediaObject> getMediaObjectsByObjectList(List<Object> objects);
+
+    public List<MediaObject> getMediaObjectsByOSearchObject(SearchObject object);
 
     public List<MediaObject> getMediaObjectsByAuthor(String author);
 

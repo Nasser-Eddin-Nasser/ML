@@ -2,6 +2,7 @@ package MediaInsider.Storage;
 
 import MediaInsider.Model.MediaObject;
 import MediaInsider.Model.MediaType;
+import MediaInsider.Model.SearchObject;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -47,6 +48,11 @@ public class LocalStorage implements IStorage {
 
     @Override
     public List<MediaObject> getMediaObjectsByObjectList(List<Object> objects) {
+        return null;
+    }
+
+    @Override
+    public List<MediaObject> getMediaObjectsByOSearchObject(SearchObject object) {
         return null;
     }
 

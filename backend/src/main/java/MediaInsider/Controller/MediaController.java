@@ -2,6 +2,7 @@ package MediaInsider.Controller;
 
 import MediaInsider.Model.MediaObject;
 import MediaInsider.Model.MediaType;
+import MediaInsider.Model.SearchObject;
 import MediaInsider.Storage.DB.IDBStorage;
 import MediaInsider.Storage.IStorage;
 import MediaInsider.Storage.Storage;
@@ -84,6 +85,14 @@ public class MediaController {
         List<MediaObject> result = storage.getMediaObjectsByObjectList(searchObjects);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(result);
     }
+
+    @PostMapping("/find/jackson")
+    public ResponseEntity<List<MediaObject>> findJacksonInMedia(@RequestBody String searchQuery) {
+        SearchObject so = JSONService.toSearchObjectsWithJackson(searchQuery);
+        List<MediaObject> result = storage.getMediaObjectsByOSearchObject(so);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(result);
+    }
+
 
     @DeleteMapping("/name/{name}")
     public void deleteObjectByName(@PathVariable("name") String name) {

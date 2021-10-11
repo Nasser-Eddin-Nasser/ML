@@ -13,7 +13,6 @@ public class MediaObject {
     @Column(name = "name")
     private String name;
     @Column(name = "type")
-    @Enumerated(EnumType.STRING)
     private MediaType type;
     @Column(name = "description", length = 100000)
     private String description;
