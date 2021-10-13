@@ -6,7 +6,6 @@ import java.util.Date;
 @Entity
 @Table(name = "media")
 public class MediaObject {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

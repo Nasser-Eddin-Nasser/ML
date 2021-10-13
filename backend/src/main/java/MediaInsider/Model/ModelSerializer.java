@@ -21,8 +21,8 @@ public class ModelSerializer extends StdSerializer<MediaObject> {
         gen.writeNumberField("id", value.getId());
         gen.writeStringField("type", value.getType().toString());
         gen.writeStringField("description", value.getDescription());
-        gen.writeStringField("uploadDate", value.getUploadBy());
-        gen.writeStringField("uploadBy", value.getAuthor());
+        gen.writeStringField("uploadDate", value.getUploadDate().toString());
+        gen.writeStringField("uploadBy", value.getUploadBy());
         gen.writeStringField("author", value.getAuthor());
         gen.writeEndObject();
     }
