@@ -22,7 +22,7 @@ public class DBStorage implements IStorage {
     private void insertDummy(int count) {
         for (int i = 0; i < count; i++) {
 
-            this.insertOrUpdate(new MediaObject(i, "Harry Portter-" + i, MediaType.getRandom(), "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry.", new Date(), "Novel ", "J. K. Rowling-" + i));
+            this.insertOrUpdate(new MediaObject(i, "Harry Portter-" + i, MediaType.getRandom(), i+"- Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry.", new Date(), "Novel ", "J. K. Rowling-" + i));
 //            this.insertOrUpdate(new MediaObject(i, "name-" + i, MediaType.getRandom(), "Celebrating", new Date(), "upload", "author-" + i));
         }
     }

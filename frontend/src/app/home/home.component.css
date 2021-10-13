@@ -1,0 +1,27 @@
+#intro {
+    background-image: url("https://mdbootstrap.com/img/new/fluid/nature/002.jpg");  
+     top: 0; 
+     left: 0; 
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover; 
+     min-width: 99%;
+     min-height: 99%;
+
+     position: relative; 
+     color: white;
+
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: xxx-large;
+  } 
+
+  .navbar .nav-link {
+    color: #fff !important;
+  }

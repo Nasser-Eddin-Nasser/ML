@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div style="margin-top: 70px;">
+    <div style="color: black;">
+        <p>Search</p>
+    </div>
+
+    <div class="tableFixHead">
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Author</th>
+                    <th>Upload By</th>
+                    <th>uploadDate</th>
+                    <th>Utils</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let contact of medias">
+                    <tr>
+                        <td>{{ contact.id }}</td>
+                        <td> {{ contact.name }}</td>
+                        <td> {{ contact.type}}</td>
+                        <td> {{ contact.author}}</td>
+                        <td> {{ contact.uploadBy}}</td>
+                        <td> {{ contact.uploadDate}}</td>
+
+                        <td >
+                            <button style="margin-right: 10px;"  class="btn btn-secondary" (click)="selectContact(contact)">
+                                <i class="fa fa-info-circle"></i>
+                            </button>
+                            <button class="btn btn-danger" (click)="deleteMedia(contact)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <th colspan="6">
+                        <div style="padding: 2%;" *ngIf="selectedContact.id ===  contact.id">
+                            <p>
+                                {{contact.description}}
+                            </p>
+                            <hr>
+                        </div>
+                    </th>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>
