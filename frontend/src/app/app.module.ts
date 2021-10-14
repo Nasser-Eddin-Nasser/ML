@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
- 
+
 import { AppRoutingModule } from './app-routing.module';
-import { ContactListComponent } from './contact-list/contact-list.component';
+import { MediaListComponent } from './media-list/media-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ContactCraeteComponent } from './contact-craete/contact-craete.component';
+import { MediaInsertComponent } from './media-insert/media-insert.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +17,14 @@ import { ContactCraeteComponent } from './contact-craete/contact-craete.componen
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ContactListComponent,
-    ContactCraeteComponent
+    MediaListComponent,
+    MediaInsertComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

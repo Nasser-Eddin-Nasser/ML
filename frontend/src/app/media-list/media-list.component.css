@@ -4,3 +4,9 @@
 .tableFixHead thead th { position: sticky; top: 0; z-index: 1; 
     background-color: white; visibility: visible;}
 .tableFixHead tbody th { position: sticky; left: 0; }
+
+
+/* .paragraph{
+    white-space: pre-line;
+}
+ */

@@ -21,10 +21,15 @@ export class DataService {
   }
 
   public deleteMediaById(media: Media): Observable<any> {
-    console.log("test");
-    console.log(`${this.REST_API_SERVER}/id/${media.id}`);
     return this.httpClient.delete(`${this.REST_API_SERVER}/id/${media.id}`);
-    // return this.httpClient.delete('http://localhost:8080/media/id/2');
   }
+
+
+  public insertOrUpdateMedia(media: Media) {
+    var mediaJson: string = JSON.stringify(media);
+    const options = { headers: { 'Content-Type': 'application/json' } };
+    return this.httpClient.post(this.REST_API_SERVER, mediaJson, options);
+  }
+
 
 }

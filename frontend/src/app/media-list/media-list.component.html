@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div style="margin-top: 70px;">
-    <div style="color: black;">
-        <p>Search</p>
-    </div>
+    <form>
+        <div class="form-group form-inline">
+            Search: <input type="text" (keyup)="onSearch($event)" />
+        </div>
+
+    </form>
 
     <div class="tableFixHead">
         <table class="table table-hover table-responsive">
@@ -18,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                <ng-container *ngFor="let contact of medias">
+                <ng-container *ngFor="let contact of filteredMedias">
                     <tr>
                         <td>{{ contact.id }}</td>
                         <td> {{ contact.name }}</td>
@@ -27,8 +30,9 @@
                         <td> {{ contact.uploadBy}}</td>
                         <td> {{ contact.uploadDate}}</td>
 
-                        <td >
-                            <button style="margin-right: 10px;"  class="btn btn-secondary" (click)="selectContact(contact)">
+                        <td>
+                            <button style="margin-right: 10px;" class="btn btn-secondary"
+                                (click)="selectContact(contact)">
                                 <i class="fa fa-info-circle"></i>
                             </button>
                             <button class="btn btn-danger" (click)="deleteMedia(contact)">
@@ -38,9 +42,8 @@
                     </tr>
                     <th colspan="6">
                         <div style="padding: 2%;" *ngIf="selectedContact.id ===  contact.id">
-                            <p>
-                                {{contact.description}}
-                            </p>
+                            <div [innerHTML]='getDesplayDescription(contact.description)'>
+                            </div>
                             <hr>
                         </div>
                     </th>

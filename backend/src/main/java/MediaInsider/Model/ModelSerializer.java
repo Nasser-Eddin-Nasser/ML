@@ -19,12 +19,12 @@ public class ModelSerializer extends StdSerializer<MediaObject> {
     public void serialize(MediaObject value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         gen.writeStartObject();
         gen.writeNumberField("id", value.getId());
-        gen.writeStringField("name", value.getName());
+        gen.writeStringField("name", value.getName().replaceAll("\"", ""));
         gen.writeStringField("type", value.getType().toString());
-        gen.writeStringField("description", value.getDescription());
+        gen.writeStringField("description", value.getDescription().replaceAll("\"", ""));
         gen.writeStringField("uploadDate", value.getUploadDate().toString());
-        gen.writeStringField("uploadBy", value.getUploadBy());
-        gen.writeStringField("author", value.getAuthor());
+        gen.writeStringField("uploadBy", value.getUploadBy().replaceAll("\"", ""));
+        gen.writeStringField("author", value.getAuthor().replaceAll("\"", ""));
         gen.writeEndObject();
     }
 }

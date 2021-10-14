@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContactCraeteComponent } from './contact-craete.component';
+import { ContactCraeteComponent } from './media-insert.component';
 
 describe('ContactCraeteComponent', () => {
   let component: ContactCraeteComponent;

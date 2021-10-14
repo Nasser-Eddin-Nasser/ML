@@ -1,0 +1,70 @@
+<div style="margin-top: 70px;">
+  <section class="mb-5">
+    <h4 class="mb-5 text-center"><strong>Insert New Media</strong></h4>
+
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <form>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form3Example1" class="form-control" (keyup)="setName($event)" />
+                <label class="form-label">Name</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form3Example2" class="form-control" (keyup)="setAuthor($event)" />
+                <label class="form-label">Author</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="form-outline">
+                <div ngbDropdown>
+                  <select class=" form-control" id="#" (change)="setType($event)">
+                    <option selected="selected" value="Unknown">Unknown </option>
+                    <option value="EBook">E-Book</option>
+                    <option value="Book">Book</option>
+                    <option value="DVD">DVD</option>
+                    <option value="CD">CD</option>
+                  </select>
+                </div>
+              </div>
+              <label class="form-label">Type</label>
+            </div>
+
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form3Example1" class="form-control" (keyup)="setUploadBy($event)" />
+                <label class="form-label">Upload By</label>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form3Example1" class="form-control" [value]="getValueTest()" readonly />
+                <label class="form-label" for="form3Example1">Upload Date</label>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-outline mb-4">
+            <textarea class="md-textarea form-control " rows="3" id="input_text" type="text" length="120" mdbCharCounter
+              mdbInput (keyup)="setDescription($event)"></textarea>
+            <label class="form-label">Description</label>
+          </div>
+
+          <button type="submit" (click)="submit()" class="btn btn-primary btn-block mb-4">
+            Insert
+          </button>
+
+
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
