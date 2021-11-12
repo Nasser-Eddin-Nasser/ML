@@ -16,10 +16,8 @@ class _InsertMediaState extends State<Insert_media> {
   late String description;
   late String uploadBy;
   late String uploadDate;
-  late String type;
-
+  late String type = "Unknown";
   void onSubmit() {
-    print("asd123123");
     HttpService().createMedia(Media(
         id: id,
         name: name,
@@ -28,14 +26,6 @@ class _InsertMediaState extends State<Insert_media> {
         uploadBy: uploadBy,
         uploadDate: getCurrentDate(),
         type: type));
-    // dummyMedia.add(Media(
-    //     id: id,
-    //     name: name,
-    //     author: author,
-    //     description: description,
-    //     uploadBy: uploadBy,
-    //     uploadDate: getCurrentDate(),
-    //     type: type));
   }
 
   void onChangeAuthor(String text) {
@@ -68,19 +58,12 @@ class _InsertMediaState extends State<Insert_media> {
     });
   }
 
-  // void onChangeUploadDate(String text) {
-  //   setState(() {
-  //     uploadDate = text;
-  //   });
-  // }
-
   void onChaneType(String text) {
+    print(text);
     setState(() {
       type = text;
     });
   }
-
-  // static const String now = DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now());
 
   String getCurrentDate() {
     return DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now());
@@ -108,8 +91,9 @@ class _InsertMediaState extends State<Insert_media> {
               padding: const EdgeInsets.all(10.0),
               margin: const EdgeInsets.all(10.0),
               alignment: Alignment.center,
-              child: ListView(shrinkWrap: true, itemExtent: 70.0,
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: ListView(
+                  shrinkWrap: true,
+                  itemExtent: 70.0,
                   children: <Widget>[
                     TextField(
                         keyboardType: TextInputType.number,
@@ -147,35 +131,58 @@ class _InsertMediaState extends State<Insert_media> {
                         onChanged: (text) {
                           onDescription(text);
                         }),
-                    // Container(
-                    //   // height: 5,
-                    //   // margin: const EdgeInsets.all(15.0),
-                    //   // padding: const EdgeInsets.all(3.0),
-                    //   decoration: BoxDecoration(
-                    //       border: Border.all(color: Colors.black)),
-                    //   child: Text(getCurrentDate()),
-                    // ),
-                    // Text(
-                    //   getCurrentDate(),
-                    //   style: const TextStyle(
-                    //     color: Colors.grey,
-                    //     fontSize: 15.0,
-                    //     fontWeight: FontWeight.bold,
+                    // DropdownButton<String>(
+                    //   value: _chosenValue,
+                    //   //elevation: 5,
+                    //   style: const TextStyle(color: Colors.black),
+
+                    //   items: <String>[
+                    //     'Android',
+                    //     'IOS',
+                    //     'Flutter',
+                    //     'Node',
+                    //     'Java',
+                    //     'Python',
+                    //     'PHP',
+                    //   ].map<DropdownMenuItem<String>>((String value) {
+                    //     return DropdownMenuItem<String>(
+                    //       value: value,
+                    //       child: Text(value),
+                    //     );
+                    //   }).toList(),
+                    //   hint: const Text(
+                    //     "Please choose a langauage",
+                    //     style: TextStyle(
+                    //         color: Colors.black,
+                    //         fontSize: 16,
+                    //         fontWeight: FontWeight.w600),
                     //   ),
                     // ),
+//
+                    DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        hint: const Text("Select Type"),
+                        value: type,
+                        isDense: true,
+                        onChanged: (newValue) {
+                          assert(newValue != null);
+                          onChaneType(newValue!);
+                        },
+                        items: <String>['CD', 'DVD', 'Book', 'EBook', 'Unknown']
+                            .map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                    ),
                     // TextField(
-                    //   decoration: const InputDecoration(
-                    //       border: OutlineInputBorder(), hintText: getCurrentDate() ),
-                    //   onChanged: (text) {
-                    //     onChangeUploadDate(text);
-                    //   },
-                    // ),
-                    TextField(
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(), hintText: 'type'),
-                        onChanged: (text) {
-                          onChaneType(text);
-                        }),
+                    //     decoration: const InputDecoration(
+                    //         border: OutlineInputBorder(), hintText: 'type'),
+                    //     onChanged: (text) {
+                    //       onChaneType(text);
+                    //     }),
                     OutlinedButton(
                       onPressed: onSubmit,
                       child: const Icon(Icons.add),
@@ -186,9 +193,5 @@ class _InsertMediaState extends State<Insert_media> {
     );
   }
 }
-
-
-
-
 
 // dummyMedia

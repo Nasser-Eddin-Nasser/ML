@@ -8,7 +8,8 @@ class HttpService {
 
   void createMedia(Media media) async {
     // ignore: avoid_print
-    print("asd");
+    print(media.type);
+    print("media.type");
     await post(
       Uri.parse(serverUrl),
       headers: <String, String>{

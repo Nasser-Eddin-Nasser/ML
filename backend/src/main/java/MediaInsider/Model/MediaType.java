@@ -21,15 +21,16 @@ public enum MediaType {
 
     @JsonCreator
     public static MediaType forValue(String value) {
-        Optional<MediaType> result = Arrays.stream(VALUES).filter(x -> x.toValue().equals(value)).findFirst();
+        Optional<MediaType> result = Arrays.stream(VALUES).filter(x -> x.toValue().equals(value.replaceAll("\"", ""))).findFirst();
         return result.isEmpty() ? MediaType.Unknown : result.get();
     }
 
     @JsonValue
     public String toValue() {
         for (MediaType type : VALUES) {
-            if (type == this)
+            if (type == this) {
                 return type.toString();
+            }
         }
         return MediaType.Unknown.toString(); // or fail
     }
