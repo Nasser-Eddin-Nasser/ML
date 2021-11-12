@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class MediaInsiderApplication {
     public static final boolean DB_Connection = true;
-    public static final int Storage_Dummies_Number = 1;
+    public static final int Storage_Dummies_Number = 50;
 
 
     public static void main(String[] args) {
